@@ -1,4 +1,4 @@
-module SSHVPNModule
+module github.com/jarakys/SSHVPNModule
 
 go 1.21
 
