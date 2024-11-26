@@ -15,7 +15,7 @@ type sshClientImpl struct {
 	client *ssh.Client
 }
 
-func NewSSHClient(password string, login string, serverIp string) (SSHClient, error) {
+func NewSSHClient(password string, login string, serverIp string, port string) (SSHClient, error) {
 	config := &ssh.ClientConfig{
 		User: login,
 		Auth: []ssh.AuthMethod{
@@ -23,7 +23,7 @@ func NewSSHClient(password string, login string, serverIp string) (SSHClient, er
 		},
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 	}
-	client, err := ssh.Dial("tcp", fmt.Sprintf("%s:22", serverIp), config)
+	client, err := ssh.Dial("tcp", fmt.Sprintf("%s:" + port, serverIp), config)
 	if err != nil {
 		return nil, err
 	}
