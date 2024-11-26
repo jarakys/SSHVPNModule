@@ -81,7 +81,7 @@ func (s *sshClientImpl) DownloadFileSSH(file string) ([]byte, error) {
 	session.Stdout = &stdoutBuf
 
 	// Execute the command to read the file content
-	catCommand := fmt.Sprintf("sudo cat %s", file+".ovpn")
+	catCommand := fmt.Sprintf("sudo cat %s", file)
 	if err := session.Run(catCommand); err != nil {
 		fmt.Printf("Failed to run command: %s\n", err)
 		return nil, err
